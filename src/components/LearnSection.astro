@@ -1,0 +1,86 @@
+---
+import LearnCard from "./LearnCard.astro";
+---
+
+<section class="learn-section">
+
+<h2>What You'll Learn</h2>
+
+<p class="section-text">
+This handbook explains how zero-day vulnerabilities are discovered,
+weaponized, and defended against using real-world examples.
+</p>
+
+<div class="grid">
+
+<LearnCard
+icon="🛡️"
+title="Zero-Day Basics"
+description="Understand what zero-day vulnerabilities are and why they are considered one of the biggest cybersecurity threats."
+/>
+
+<LearnCard
+icon="💥"
+title="Famous Attacks"
+description="Explore incidents like Stuxnet, Pegasus and other attacks that changed cybersecurity forever."
+/>
+
+<LearnCard
+icon="🐧"
+title="Linux Security"
+description="Learn why Linux powers servers worldwide and how vulnerabilities affect the Linux ecosystem."
+/>
+
+<LearnCard
+icon="🧠"
+title="Defense"
+description="Discover how developers, researchers and organizations detect and patch zero-day vulnerabilities."
+/>
+
+</div>
+
+</section>
+
+<style>
+
+.learn-section{
+
+padding:7rem 0;
+
+}
+
+.learn-section h2{
+
+font-size:3rem;
+
+text-align:center;
+
+margin-bottom:1rem;
+
+}
+
+.section-text{
+
+max-width:700px;
+
+margin:auto;
+
+text-align:center;
+
+margin-bottom:4rem;
+
+color:#9da7b3;
+
+}
+
+.grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+gap:2rem;
+
+}
+
+</style>
