@@ -1,0 +1,215 @@
+---
+import DocsLayout from "../../layouts/DocsLayout.astro";
+---
+
+<DocsLayout title="Linux Security">
+
+<h1>Linux Security</h1>
+
+<p class="lead">
+Linux quietly runs most of the internet — the majority of cloud servers,
+nearly every major cloud provider's infrastructure, and the vast majority
+of internet-of-things devices. That ubiquity is exactly what makes it such
+a high-value target: a single kernel bug can potentially reach millions of
+machines at once.
+</p>
+
+<hr />
+
+<h2>Why Linux Is a Prime Target</h2>
+
+<ul>
+  <li>It runs the majority of cloud servers, web infrastructure, and embedded/IoT devices.</li>
+  <li>The kernel and core utilities are enormous codebases, giving attackers a wide surface to search for bugs.</li>
+  <li>It's open source — attackers can read the exact same source code defenders do, hunting for flaws before patches land.</li>
+  <li>Many Linux systems are unattended servers, so patches can sit unapplied for months or years.</li>
+</ul>
+
+<h2>Notable Linux Zero-Days</h2>
+
+<div class="example">
+  <span class="idx">CVE-2022-0847</span>
+  <h3>Dirty Pipe</h3>
+  <p>
+    A kernel vulnerability that let local attackers overwrite data inside
+    read-only files by exploiting a flaw in how Linux's pipe buffers
+    handled page flags — allowing privilege escalation to root despite
+    file permissions explicitly forbidding the write.
+  </p>
+</div>
+
+<div class="example">
+  <span class="idx">CVE-2021-4034</span>
+  <h3>PwnKit</h3>
+  <p>
+    A flaw in Polkit's <code>pkexec</code> utility that had gone unnoticed
+    for over a decade. Any local user could exploit it to gain root
+    privileges in seconds, and because <code>pkexec</code> ships by
+    default, it affected nearly every major Linux distribution at once.
+  </p>
+</div>
+
+<div class="example">
+  <span class="idx">CVE-2016-5195</span>
+  <h3>Dirty COW</h3>
+  <p>
+    A race condition in the kernel's copy-on-write memory handling that
+    let attackers win a timing window to gain write access to memory that
+    should have been read-only, enabling privilege escalation. The bug had
+    existed in the kernel for roughly nine years before it was found.
+  </p>
+</div>
+
+<h2>Beyond the Kernel: The Container Layer</h2>
+
+<p>
+Modern Linux infrastructure rarely runs bare — it runs in containers,
+orchestrated by tools like Docker and Kubernetes. That adds an entirely
+new layer of attack surface on top of the kernel itself:
+</p>
+
+<ul>
+  <li><strong>Container escapes</strong> — bugs that let a process break out of its container and reach the host system, effectively undoing the isolation the container was supposed to provide.</li>
+  <li><strong>Misconfigured privilege</strong> — containers run as root, or with excessive Linux capabilities, by default far more often than they should be.</li>
+  <li><strong>Supply chain risk</strong> — a single compromised base image or dependency can propagate into every container built from it.</li>
+  <li><strong>Exposed orchestration APIs</strong> — an unauthenticated Kubernetes API server or Docker socket is effectively a root shell waiting to be found.</li>
+</ul>
+
+<h2>Core Linux Hardening Principles</h2>
+
+<div class="tips">
+
+  <div class="tip">
+    <strong>Least Privilege</strong>
+    <p>Run services under dedicated, unprivileged users — never root — so a compromised process has limited reach.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Mandatory Access Control</strong>
+    <p>Tools like SELinux and AppArmor confine exactly what a process can touch, even after it's exploited.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Minimal Attack Surface</strong>
+    <p>Remove unused packages and services — code that isn't installed can't be exploited.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Patch Cadence</strong>
+    <p>Automated updates and a fast patch cycle close the "n-day" window attackers rely on.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Monitoring &amp; Auditing</strong>
+    <p>Tools like auditd and behavior-based EDR can catch exploitation attempts even without a known signature.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Kernel Hardening</strong>
+    <p>Features like ASLR, stack canaries, and seccomp filters make exploitation significantly harder even when a bug exists.</p>
+  </div>
+
+</div>
+
+<h2>Key Takeaway</h2>
+
+<p class="body-text">
+Open source doesn't automatically mean more secure — but it does mean
+vulnerabilities are found, discussed, and patched in the open, by anyone
+who cares to look. The real security gain comes from fast patching,
+layered defenses, and minimizing what's exposed in the first place —
+whether that's at the kernel level or the container sitting on top of it.
+</p>
+
+<style>
+
+.lead{
+    font-size:1.1rem;
+    line-height:1.85;
+    color:var(--ink-soft);
+}
+
+hr{
+    margin:2.5rem 0;
+    border:none;
+    border-top:1px solid var(--line);
+}
+
+ul{
+    margin:1.25rem 0 1.25rem 1.25rem;
+    color:var(--ink-soft);
+    line-height:1.9;
+}
+
+.body-text{
+    color:var(--ink-soft);
+    line-height:1.8;
+}
+
+code{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:.15rem .4rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.88em;
+    color:var(--accent);
+}
+
+.example{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.5rem 1.5rem 1.25rem;
+    margin:1.25rem 0;
+}
+
+.example .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.7rem;
+    color:var(--accent);
+    letter-spacing:.06em;
+    display:block;
+    margin-bottom:.5rem;
+}
+
+.example h3{
+    margin-bottom:.6rem;
+    font-size:1.1rem;
+}
+
+.example p{
+    margin-bottom:0;
+}
+
+.tips{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+    margin-top:1.5rem;
+}
+
+.tip{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.25rem;
+}
+
+.tip strong{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--amber);
+}
+
+.tip p{
+    margin-top:.6rem;
+    margin-bottom:0;
+    font-size:.92rem;
+}
+
+</style>
+
+</DocsLayout>

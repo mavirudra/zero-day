@@ -1,15 +1,16 @@
 :root {
-  --bg: #0d1117;
-  --surface: #161b22;
-  --surface-light: #21262d;
+  --bg: #FAFAF8;
+  --bg-alt: #F2F1EB;
+  --ink: #14181F;
+  --ink-soft: #454C57;
+  --muted: #6B7280;
+  --accent: #2D6A4F;
+  --accent-soft: #E4EEE9;
+  --amber: #B45309;
+  --line: #E5E3DD;
+  --radius: 3px;
 
-  --text: #e6edf3;
-  --muted: #9da7b3;
-
-  --primary: #58a6ff;
-  --border: #30363d;
-
-  --max-width: 1200px;
+  --max-width: 1000px;
 }
 
 *{
@@ -23,10 +24,12 @@ html{
 }
 
 body{
-    font-family:Inter,sans-serif;
+    font-family:'Inter', system-ui, sans-serif;
     background:var(--bg);
-    color:var(--text);
+    color:var(--ink);
+    font-size:16px;
     line-height:1.7;
+    -webkit-font-smoothing:antialiased;
 }
 
 a{
@@ -44,30 +47,42 @@ img{
 }
 
 section{
-    padding:6rem 0;
+    padding:5rem 0;
+    border-bottom:1px solid var(--line);
+}
+
+section:last-of-type{
+    border-bottom:none;
 }
 
 h1,h2,h3,h4{
-    font-family:"Space Grotesk",sans-serif;
+    font-family:'Fraunces', serif;
     line-height:1.1;
+    font-weight:600;
 }
 
 h1{
-    font-size:clamp(3rem,7vw,5rem);
+    font-size:clamp(2.6rem,6vw,4rem);
 }
 
 h2{
-    font-size:clamp(2rem,5vw,3rem);
+    font-size:clamp(1.75rem,4vw,2.5rem);
+    font-weight:500;
 }
 
 p{
-    color:var(--muted);
+    color:var(--ink-soft);
 }
 
 button{
     cursor:pointer;
     border:none;
     outline:none;
+    font-family:inherit;
+}
+
+.mono{
+    font-family:'IBM Plex Mono', monospace;
 }
 
 .btn{
@@ -75,34 +90,40 @@ button{
     align-items:center;
     gap:.6rem;
 
-    background:var(--primary);
-    color:white;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
 
-    padding:14px 24px;
+    padding:10px 20px;
 
-    border-radius:10px;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
 
-    font-weight:600;
+    font-weight:500;
 
-    transition:.25s;
+    transition:.2s ease;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
+.btn.solid{
+    background:var(--ink);
+    color:var(--bg);
+}
+
+.btn.solid:hover{
+    background:var(--accent);
+    border-color:var(--accent);
+}
+
+.btn.ghost{
+    color:var(--ink);
+}
+
+.btn.ghost:hover{
+    border-color:var(--accent);
+    color:var(--accent);
 }
 
 .card{
-    background:var(--surface);
-    border:1px solid var(--border);
-    border-radius:18px;
-}
-/* ===== Background Grid ===== */
-
-body {
-  background-color: #0d1117;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
-  color: #f0f6fc;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
 }

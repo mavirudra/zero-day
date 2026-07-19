@@ -1,13 +1,14 @@
 ---
-const current = Astro.url.pathname;
+const base = import.meta.env.BASE_URL;
+const current = Astro.url.pathname.replace(/\/$/, "");
 
 const links = [
-  { href: "/docs", label: "📘 Introduction" },
-  { href: "/docs/zero-day", label: "🛡️ What is a Zero-Day?" },
-  { href: "/docs/lifecycle", label: "🔄 Lifecycle" },
-  { href: "/docs/case-studies", label: "💥 Case Studies" },
-  { href: "/docs/linux-security", label: "🐧 Linux Security" },
-  { href: "/docs/references", label: "📚 References" }
+  { href: `${base}docs`, label: "Introduction" },
+  { href: `${base}docs/zero-day`, label: "What is a Zero-Day?" },
+  { href: `${base}docs/lifecycle`, label: "Lifecycle" },
+  { href: `${base}docs/case-studies`, label: "Case Studies" },
+  { href: `${base}docs/linux-security`, label: "Linux Security" },
+  { href: `${base}docs/references`, label: "References" }
 ];
 ---
 
@@ -37,43 +38,57 @@ class={current === link.href ? "active" : ""}
 <style>
 
 .sidebar{
-    width:260px;
-    padding:2rem;
-    border-right:1px solid #30363d;
-    min-height:calc(100vh - 72px);
+    width:240px;
+    flex-shrink:0;
+    padding:3rem 1.5rem;
+    border-right:1px solid var(--line);
+    min-height:calc(100vh - 64px);
     position:sticky;
-    top:72px;
+    top:64px;
+}
+
+.sidebar h2{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    font-weight:500;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    margin-bottom:1.25rem;
 }
 
 .sidebar nav{
     display:flex;
     flex-direction:column;
-    gap:.5rem;
+    gap:.15rem;
 }
 
 .sidebar a{
     text-decoration:none;
-    color:#9da7b3;
-    padding:.8rem 1rem;
-    border-radius:10px;
-    transition:.25s;
+    color:var(--ink-soft);
+    font-size:.92rem;
+    padding:.55rem .75rem;
+    border-radius:var(--radius);
+    border-left:2px solid transparent;
+    transition:.15s ease;
 }
 
 .sidebar a:hover{
-    background:#161b22;
-    color:#58a6ff;
+    background:var(--bg-alt);
+    color:var(--accent);
 }
 
 .active{
-    background:#1f2937;
-    color:#58a6ff !important;
-    border-left:3px solid #58a6ff;
+    background:var(--accent-soft);
+    color:var(--accent) !important;
+    border-left:2px solid var(--accent);
+    font-weight:500;
 }
 
 @media(max-width:900px){
 
 .sidebar{
-display:none;
+    display:none;
 }
 
 }

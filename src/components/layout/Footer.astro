@@ -1,3 +1,7 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <footer class="footer">
   <div class="container footer-content">
 
@@ -10,24 +14,25 @@
     </div>
 
     <div class="links">
-      <a href="/">Home</a>
-      <a href="/docs">Documentation</a>
-      <a href="https://github.com/mavirudra/zero-day" target="_blank">
+      <a href={base}>Home</a>
+      <a href={`${base}docs`}>Documentation</a>
+      <a href="https://github.com/mavirudra/zero-day" target="_blank" rel="noopener">
         GitHub
       </a>
     </div>
 
   </div>
 
-  <div class="copyright">
-    © 2026 Zero-Day Handbook • Built with Astro
+  <div class="container copyright">
+    <span>© 2026 Zero-Day Handbook</span>
+    <span>open source · MIT licensed</span>
   </div>
 </footer>
 
 <style>
 .footer{
-    margin-top:6rem;
-    border-top:1px solid #30363d;
+    margin-top:4rem;
+    border-top:1px solid var(--line);
     padding:3rem 0 1.5rem;
 }
 
@@ -39,34 +44,50 @@
 }
 
 .footer h3{
+    font-size:1.1rem;
     margin-bottom:.8rem;
 }
 
 .footer p{
-    color:#9da7b3;
-    max-width:420px;
+    color:var(--ink-soft);
+    max-width:380px;
     line-height:1.7;
+    font-size:.95rem;
 }
 
 .links{
     display:flex;
     flex-direction:column;
-    gap:.8rem;
+    gap:.7rem;
 }
 
 .links a{
-    color:#9da7b3;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    color:var(--ink-soft);
     text-decoration:none;
+    width:fit-content;
+    border-bottom:1px solid transparent;
 }
 
 .links a:hover{
-    color:#58a6ff;
+    color:var(--accent);
+    border-color:var(--accent);
 }
 
 .copyright{
-    margin-top:2rem;
-    text-align:center;
-    color:#7d8590;
-    font-size:.9rem;
+    margin-top:2.5rem;
+    display:flex;
+    justify-content:space-between;
+    font-family:'IBM Plex Mono', monospace;
+    color:var(--muted);
+    font-size:.75rem;
+}
+
+@media(max-width:500px){
+.copyright{
+    flex-direction:column;
+    gap:.4rem;
+}
 }
 </style>

@@ -7,103 +7,256 @@ import DocsLayout from "../../layouts/DocsLayout.astro";
 <h1>Case Studies</h1>
 
 <p class="lead">
-Real-world zero-day attacks demonstrate how unknown vulnerabilities can have
-global consequences. One of the most famous examples is <strong>Stuxnet</strong>.
+Theory only gets you so far. These five incidents show how zero-days
+actually play out in the real world — from industrial sabotage to a bug
+that leaked passwords out of a third of the internet's servers.
 </p>
 
-<section class="case-study">
+<div class="case-study">
 
-<h2>Stuxnet (2010)</h2>
+<div class="case-header">
+  <span class="case-num">01</span>
+  <h2>Stuxnet</h2>
+</div>
 
 <div class="meta">
-  <span>🎯 Target: Industrial Control Systems</span>
-  <span>📅 Year: 2010</span>
+  <span>Target: Industrial Control Systems</span>
+  <span>Year: 2010</span>
+  <span>4 chained zero-days</span>
 </div>
 
 <p>
-Stuxnet was a highly sophisticated computer worm designed to target Siemens
-industrial control systems used in Iran's nuclear program. It exploited
-multiple Windows zero-day vulnerabilities, allowing it to spread and execute
-without detection.
+Stuxnet is widely considered the first cyberweapon to cause physical
+destruction. Discovered in 2010, the worm was designed to target Siemens
+industrial control systems used to run the centrifuges at Iran's Natanz
+nuclear facility. It chained together four separate Windows zero-day
+vulnerabilities to spread undetected, then subtly altered the centrifuges'
+spin speed — physically destroying equipment while feeding operators
+falsified readings that showed everything running normally.
 </p>
 
-<h3>Why It Was Important</h3>
-
+<h3>Why It Mattered</h3>
 <ul>
-  <li>Used multiple zero-day vulnerabilities.</li>
-  <li>Targeted physical infrastructure instead of stealing data.</li>
-  <li>Changed how governments viewed cyber warfare.</li>
-  <li>Became one of the most studied cyberattacks in history.</li>
+  <li>The first known malware to cause physical damage to hardware, not just data.</li>
+  <li>Used four zero-days at once — an extraordinary "budget" for a single operation.</li>
+  <li>Demonstrated that air-gapped, offline systems aren't immune — it spread via infected USB drives.</li>
+  <li>Widely attributed to a joint US-Israeli operation, though never officially confirmed.</li>
 </ul>
 
-<h3>Lessons Learned</h3>
-
-<div class="lesson-grid">
-
-<div class="lesson">
-<h4>Defense in Depth</h4>
-<p>Multiple layers of security reduce the impact of unknown vulnerabilities.</p>
 </div>
 
-<div class="lesson">
-<h4>Regular Updates</h4>
-<p>Keeping systems patched reduces the attack surface after fixes are released.</p>
+<div class="case-study">
+
+<div class="case-header">
+  <span class="case-num">02</span>
+  <h2>WannaCry &amp; EternalBlue</h2>
 </div>
 
-<div class="lesson">
-<h4>Monitoring</h4>
-<p>Behavior-based monitoring can detect suspicious activity even when signatures do not.</p>
+<div class="meta">
+  <span>Target: Windows SMB (CVE-2017-0144)</span>
+  <span>Year: 2017</span>
+  <span>200,000+ machines, 150 countries</span>
 </div>
+
+<p>
+EternalBlue was an exploit for a flaw in Windows' SMBv1 file-sharing
+protocol, originally developed by the NSA. It was leaked online in April
+2017 by a group calling themselves the Shadow Brokers — Microsoft had
+already patched the underlying bug a month earlier, but countless systems
+hadn't updated. In May 2017, the WannaCry ransomware worm weaponized the
+leaked exploit, spreading automatically between unpatched machines with no
+user interaction required at all.
+</p>
+
+<h3>Why It Mattered</h3>
+<ul>
+  <li>Crippled the UK's National Health Service, forcing hospitals to divert ambulances and cancel appointments.</li>
+  <li>Spread as a self-propagating worm — one infected machine could compromise an entire network within minutes.</li>
+  <li>A security researcher accidentally halted the outbreak by registering an unregistered domain the malware checked as a kill switch.</li>
+  <li>Proved that a patched vulnerability is only safe once it's actually <em>applied</em> — the fix existed for two months before the attack.</li>
+</ul>
 
 </div>
 
-</section>
+<div class="case-study">
+
+<div class="case-header">
+  <span class="case-num">03</span>
+  <h2>Heartbleed</h2>
+</div>
+
+<div class="meta">
+  <span>Target: OpenSSL (CVE-2014-0160)</span>
+  <span>Year: 2014</span>
+  <span>~17% of secure servers affected</span>
+</div>
+
+<p>
+Heartbleed wasn't an attack someone launched — it was a two-year-old bug
+quietly waiting in OpenSSL, the encryption library securing a huge share
+of the web. A missing bounds check in the "heartbeat" feature let an
+attacker request more data than they should've been able to see, leaking
+up to 64KB of a server's private memory per request — including private
+encryption keys, passwords, and session cookies. Worse, exploiting it left
+no trace in server logs.
+</p>
+
+<h3>Why It Mattered</h3>
+<ul>
+  <li>Affected roughly one in six of all HTTPS-secured websites on the internet at the time.</li>
+  <li>Because exploitation was invisible, nobody could be sure what had already been stolen before the fix shipped.</li>
+  <li>Forced a mass, coordinated event: certificate revocation and password resets across the industry.</li>
+  <li>Became a textbook case for why memory-safety bugs in widely-shared libraries are so dangerous.</li>
+</ul>
+
+</div>
+
+<div class="case-study">
+
+<div class="case-header">
+  <span class="case-num">04</span>
+  <h2>Log4Shell</h2>
+</div>
+
+<div class="meta">
+  <span>Target: Apache Log4j (CVE-2021-44228)</span>
+  <span>Year: 2021</span>
+  <span>CVSS 10.0 — maximum severity</span>
+</div>
+
+<p>
+Log4j is a logging library used inside an enormous share of enterprise
+Java software — the kind of invisible dependency almost nobody thinks
+about. In December 2021, researchers found that a specially crafted log
+message could trick Log4j into fetching and executing remote code,
+handing an attacker full control of the server with almost no effort.
+Because logging is everywhere, so was the vulnerability.
+</p>
+
+<h3>Why It Mattered</h3>
+<ul>
+  <li>Rated the maximum possible CVSS severity score of 10.0.</li>
+  <li>Exploitable with a single line of text — attackers didn't need to write custom malware, just the right log message.</li>
+  <li>Affected an almost uncountable range of downstream software, since Log4j is a dependency of dependencies.</li>
+  <li>Triggered a mass, industry-wide scramble to inventory which applications even used Log4j in the first place.</li>
+</ul>
+
+</div>
+
+<div class="case-study">
+
+<div class="case-header">
+  <span class="case-num">05</span>
+  <h2>Pegasus &amp; FORCEDENTRY</h2>
+</div>
+
+<div class="meta">
+  <span>Target: iMessage / iOS (CVE-2021-30860)</span>
+  <span>Year: 2021</span>
+  <span>Zero-click exploit</span>
+</div>
+
+<p>
+NSO Group's Pegasus spyware became infamous for targeting journalists,
+activists, and dissidents. Its most alarming delivery method, FORCEDENTRY,
+discovered by Citizen Lab, was a <strong>zero-click</strong> exploit — it
+required no interaction from the victim at all. A maliciously crafted
+image file processed silently by iMessage was enough to compromise a
+fully patched iPhone and install spyware capable of reading messages,
+tracking location, and activating the camera and microphone.
+</p>
+
+<h3>Why It Mattered</h3>
+<ul>
+  <li>Google's Project Zero called it one of the most technically sophisticated exploits they had ever analyzed.</li>
+  <li>Zero-click exploits remove the human element entirely — there's no phishing link to avoid, no attachment to not open.</li>
+  <li>Exposed the commercial spyware industry, where private companies sell nation-states access to zero-days like these.</li>
+  <li>Led Apple to sue NSO Group and to introduce Lockdown Mode, a hardened device state for high-risk users.</li>
+</ul>
+
+</div>
+
+<h2>The Common Thread</h2>
+
+<p class="closing">
+Every one of these incidents came down to the same gap: a difference
+between what software was <em>supposed</em> to do and what it actually
+did under the right — or wrong — conditions. Defense in depth, fast
+patch cycles, and treating every dependency as a potential attack surface
+are what make the next one survivable.
+</p>
 
 <style>
 .lead{
   font-size:1.1rem;
-  color:#c9d1d9;
-  line-height:1.8;
+  color:var(--ink-soft);
+  line-height:1.85;
 }
 
 .case-study{
-  margin-top:2.5rem;
+  margin-top:3rem;
+  padding-top:2.5rem;
+  border-top:1px solid var(--line);
+}
+
+.case-study:first-of-type{
+  margin-top:2rem;
+}
+
+.case-header{
+  display:flex;
+  align-items:baseline;
+  gap:.9rem;
+  margin-bottom:1rem;
+}
+
+.case-num{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.85rem;
+  color:var(--muted);
+}
+
+.case-study h2{
+  font-size:1.6rem;
 }
 
 .meta{
   display:flex;
-  gap:1rem;
+  gap:.6rem;
   flex-wrap:wrap;
-  margin:1rem 0 2rem;
+  margin:0 0 1.5rem;
 }
 
 .meta span{
-  background:#161b22;
-  border:1px solid #30363d;
-  padding:.5rem .9rem;
-  border-radius:999px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.72rem;
+  color:var(--accent);
+  background:var(--accent-soft);
+  padding:.35rem .75rem;
+  border-radius:20px;
 }
 
-.lesson-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1rem;
-  margin-top:1.5rem;
+.case-study p{
+  color:var(--ink-soft);
+  line-height:1.8;
 }
 
-.lesson{
-  background:#161b22;
-  border:1px solid #30363d;
-  border-radius:14px;
-  padding:1.25rem;
+.case-study h3{
+  margin-top:1.75rem;
+  margin-bottom:.75rem;
+  font-size:1.05rem;
 }
 
-.lesson h4{
-  margin-bottom:.6rem;
+.case-study ul{
+  margin:0 0 0 1.25rem;
+  color:var(--ink-soft);
+  line-height:1.9;
 }
 
-.lesson p{
-  color:#9da7b3;
+.closing{
+  font-size:1.05rem;
+  max-width:680px;
+  margin-top:1rem;
 }
 </style>
 

@@ -1,16 +1,20 @@
 ---
 interface Props {
   icon: any;
+  index: string;
   title: string;
   description: string;
 }
 
-const { icon: Icon, title, description } = Astro.props;
+const { icon: Icon, index, title, description } = Astro.props;
 ---
 
 <div class="learn-card">
-  <div class="icon">
-    <Icon size={36} strokeWidth={2} />
+  <div class="card-top">
+    <div class="icon">
+      <Icon size={22} strokeWidth={1.75} />
+    </div>
+    <span class="idx">{index}</span>
   </div>
 
   <h3>{title}</h3>
@@ -20,30 +24,49 @@ const { icon: Icon, title, description } = Astro.props;
 
 <style>
 .learn-card {
-  background: #161b22;
-  border: 1px solid #30363d;
-  border-radius: 18px;
-  padding: 2rem;
-  transition: all .3s ease;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: border-color .2s ease;
 }
 
 .learn-card:hover {
-  transform: translateY(-8px);
-  border-color: #58a6ff;
-  box-shadow: 0 0 30px rgba(88,166,255,.15);
+  border-color: var(--accent);
+}
+
+.card-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:1.1rem;
 }
 
 .icon{
-  color:#58a6ff;
-  margin-bottom:1rem;
+  width:38px;
+  height:38px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--accent-soft);
+  color:var(--accent);
+}
+
+.idx{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:.75rem;
+  color:var(--muted);
 }
 
 .learn-card h3{
-  margin-bottom:.8rem;
+  font-size:1.05rem;
+  margin-bottom:.6rem;
 }
 
 .learn-card p{
-  color:#9da7b3;
-  line-height:1.7;
+  color:var(--ink-soft);
+  line-height:1.65;
+  font-size:.92rem;
 }
 </style>

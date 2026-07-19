@@ -34,27 +34,36 @@ const { title } = Astro.props;
 .docs-layout{
     display:flex;
     min-height:100vh;
+    max-width:1200px;
+    margin:0 auto;
 }
 
 .content{
     flex:1;
-    padding:4rem;
-    max-width:900px;
+    padding:4rem 3rem;
+    max-width:760px;
 }
 
 .content h1{
+    font-size:clamp(2.2rem,5vw,2.8rem);
+    margin-bottom:1.25rem;
+}
+
+.content h2{
+    font-size:1.5rem;
+    margin-top:2.5rem;
     margin-bottom:1rem;
 }
 
 .content p{
-    color:#9da7b3;
+    color:var(--ink-soft);
     line-height:1.8;
 }
 
 @media(max-width:900px){
 
 .content{
-    padding:2rem;
+    padding:2.5rem 1.75rem;
 }
 
 }

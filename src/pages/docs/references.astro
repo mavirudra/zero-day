@@ -1,0 +1,167 @@
+---
+import DocsLayout from "../../layouts/DocsLayout.astro";
+---
+
+<DocsLayout title="References">
+
+<h1>References</h1>
+
+<p class="lead">
+This handbook draws on publicly available security research, vendor
+advisories, and well-known industry resources. If you want to go deeper
+into any topic covered here, these are good places to start.
+</p>
+
+<hr />
+
+<h2>Vulnerability Databases</h2>
+
+<div class="ref-grid">
+
+  <a class="ref-card" href="https://cve.mitre.org" target="_blank" rel="noopener">
+    <h3>CVE (MITRE)</h3>
+    <p>The canonical catalog of publicly disclosed vulnerabilities, identified by CVE ID.</p>
+  </a>
+
+  <a class="ref-card" href="https://nvd.nist.gov" target="_blank" rel="noopener">
+    <h3>NVD (NIST)</h3>
+    <p>The National Vulnerability Database — CVE entries enriched with severity scores (CVSS) and metadata.</p>
+  </a>
+
+  <a class="ref-card" href="https://www.exploit-db.com" target="_blank" rel="noopener">
+    <h3>Exploit-DB</h3>
+    <p>An archive of public exploits and proof-of-concept code for known vulnerabilities.</p>
+  </a>
+
+  <a class="ref-card" href="https://attack.mitre.org" target="_blank" rel="noopener">
+    <h3>MITRE ATT&amp;CK</h3>
+    <p>A knowledge base of real-world adversary tactics and techniques used post-exploitation.</p>
+  </a>
+
+</div>
+
+<h2>Standards &amp; Guidance</h2>
+
+<div class="ref-grid">
+
+  <a class="ref-card" href="https://owasp.org" target="_blank" rel="noopener">
+    <h3>OWASP</h3>
+    <p>Community-driven resources on application security, including the well-known OWASP Top 10.</p>
+  </a>
+
+  <a class="ref-card" href="https://www.cisa.gov" target="_blank" rel="noopener">
+    <h3>CISA</h3>
+    <p>The U.S. Cybersecurity and Infrastructure Security Agency — advisories and the Known Exploited Vulnerabilities catalog.</p>
+  </a>
+
+</div>
+
+<h2>Research &amp; Disclosure</h2>
+
+<div class="ref-grid">
+
+  <a class="ref-card" href="https://googleprojectzero.blogspot.com" target="_blank" rel="noopener">
+    <h3>Project Zero</h3>
+    <p>Google's security research team — deep technical write-ups on real, in-the-wild zero-days.</p>
+  </a>
+
+  <a class="ref-card" href="https://citizenlab.ca" target="_blank" rel="noopener">
+    <h3>Citizen Lab</h3>
+    <p>University of Toronto research group that has uncovered spyware campaigns including Pegasus.</p>
+  </a>
+
+</div>
+
+<h2>Bug Bounty Platforms</h2>
+
+<div class="ref-grid">
+
+  <a class="ref-card" href="https://hackerone.com" target="_blank" rel="noopener">
+    <h3>HackerOne</h3>
+    <p>One of the largest bug bounty and coordinated disclosure platforms, connecting researchers with vendor programs.</p>
+  </a>
+
+  <a class="ref-card" href="https://bugcrowd.com" target="_blank" rel="noopener">
+    <h3>Bugcrowd</h3>
+    <p>Crowdsourced security platform running bug bounty and vulnerability disclosure programs.</p>
+  </a>
+
+</div>
+
+<h2>Case Studies Referenced</h2>
+
+<ul>
+  <li><strong>Stuxnet</strong> — Symantec and Kaspersky technical write-ups on the worm's four chained Windows zero-days.</li>
+  <li><strong>WannaCry / EternalBlue</strong> — CVE-2017-0144; NHS Digital and CERT-EU incident advisories.</li>
+  <li><strong>Heartbleed</strong> — CVE-2014-0160; the original disclosure at heartbleed.com by Codenomicon and Google Security.</li>
+  <li><strong>Log4Shell</strong> — CVE-2021-44228; Apache Software Foundation security advisory.</li>
+  <li><strong>Pegasus / FORCEDENTRY</strong> — CVE-2021-30860; Citizen Lab's original research report, and Google Project Zero's technical deep-dive.</li>
+</ul>
+
+<h2>Suggested Further Reading</h2>
+
+<ul>
+  <li><em>The Art of Software Security Assessment</em> — Dowd, McDonald, Schuh</li>
+  <li><em>Countdown to Zero Day</em> — Kim Zetter (on Stuxnet)</li>
+  <li><em>This Is How They Tell Me the World Ends</em> — Nicole Perlroth (on the zero-day market)</li>
+</ul>
+
+<style>
+
+.lead{
+    font-size:1.1rem;
+    line-height:1.85;
+    color:var(--ink-soft);
+}
+
+hr{
+    margin:2.5rem 0;
+    border:none;
+    border-top:1px solid var(--line);
+}
+
+ul{
+    margin:1.25rem 0 1.25rem 1.25rem;
+    color:var(--ink-soft);
+    line-height:1.9;
+}
+
+em{
+    font-style:italic;
+}
+
+.ref-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1rem;
+    margin:1.25rem 0 2rem;
+}
+
+.ref-card{
+    display:block;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.4rem;
+    transition:.2s ease;
+}
+
+.ref-card:hover{
+    border-color:var(--accent);
+}
+
+.ref-card h3{
+    color:var(--accent);
+    font-size:1rem;
+    margin-bottom:.5rem;
+}
+
+.ref-card p{
+    color:var(--ink-soft);
+    line-height:1.6;
+    font-size:.9rem;
+}
+
+</style>
+
+</DocsLayout>

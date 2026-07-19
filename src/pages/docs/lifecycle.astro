@@ -1,0 +1,210 @@
+---
+import DocsLayout from "../../layouts/DocsLayout.astro";
+---
+
+<DocsLayout title="Vulnerability Lifecycle">
+
+<h1>Vulnerability Lifecycle</h1>
+
+<p class="lead">
+Every zero-day vulnerability moves through a predictable set of stages —
+from the moment it's introduced in code to the moment it's finally patched.
+Understanding this lifecycle helps explain why some vulnerabilities stay
+hidden for years while others are exploited within hours of discovery.
+</p>
+
+<hr />
+
+<h2>The Five Stages</h2>
+
+<div class="stages">
+
+  <div class="stage">
+    <span class="num">01</span>
+    <div>
+      <h3>Discovery</h3>
+      <p>
+        A flaw is found in software — either by a security researcher running
+        audits and fuzzers, or by an attacker probing for weaknesses. At this
+        point, the vendor usually has no idea the flaw exists.
+      </p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <span class="num">02</span>
+    <div>
+      <h3>Analysis</h3>
+      <p>
+        The finder studies the bug to understand what it actually allows —
+        code execution, privilege escalation, data leakage — and how reliably
+        it can be triggered. This determines how dangerous it really is.
+      </p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <span class="num">03</span>
+    <div>
+      <h3>Weaponization / Exploitation</h3>
+      <p>
+        If an attacker has the vulnerability, they may build a working exploit
+        and use it quietly, often for as long as possible, since going public
+        or getting caught ends its usefulness. This is the most dangerous
+        window in the lifecycle — the vendor has had <strong>zero days</strong>
+        to prepare a fix.
+      </p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <span class="num">04</span>
+    <div>
+      <h3>Disclosure</h3>
+      <p>
+        A researcher who finds the bug typically reports it privately to the
+        vendor — this is called <strong>responsible disclosure</strong> — and
+        agrees to withhold public details for a fixed window (often 90 days)
+        so the vendor has time to fix it before attackers can weaponize it.
+      </p>
+    </div>
+  </div>
+
+  <div class="stage">
+    <span class="num">05</span>
+    <div>
+      <h3>Patch &amp; Remediation</h3>
+      <p>
+        The vendor releases a fix. But the lifecycle doesn't truly end here —
+        the vulnerability stays dangerous to anyone who hasn't updated, which
+        is why unpatched systems remain exploitable long after a fix exists.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<h2>Disclosure Models</h2>
+
+<p class="body-text">
+Not every vulnerability follows the "report privately, wait, then fix"
+path. There are a few common approaches, each with tradeoffs:
+</p>
+
+<ul>
+  <li><strong>Responsible / Coordinated Disclosure</strong> — the finder gives the vendor time to patch before going public. The industry standard.</li>
+  <li><strong>Full Disclosure</strong> — details are published immediately, pressuring vendors to act fast, but also arming attackers instantly.</li>
+  <li><strong>Bug Bounty Programs</strong> — vendors pay researchers to report bugs through a structured, incentivized process.</li>
+  <li><strong>Zero-Day Markets</strong> — some vulnerabilities are sold rather than disclosed, to governments, brokers, or on the black market.</li>
+</ul>
+
+<h2>Why Timing Matters</h2>
+
+<div class="tips">
+
+  <div class="tip">
+    <strong>The Race</strong>
+    <p>Once a fix ships, attackers can often reverse-engineer the patch to build an exploit for anyone who hasn't updated yet.</p>
+  </div>
+
+  <div class="tip">
+    <strong>N-Days</strong>
+    <p>A patched-but-unapplied vulnerability is called an "n-day" — technically known, but still exploitable in the wild.</p>
+  </div>
+
+  <div class="tip">
+    <strong>Patch Fast</strong>
+    <p>The gap between patch release and patch adoption is where most real-world breaches actually happen.</p>
+  </div>
+
+</div>
+
+<style>
+
+.lead{
+    font-size:1.1rem;
+    line-height:1.85;
+    color:var(--ink-soft);
+}
+
+hr{
+    margin:2.5rem 0;
+    border:none;
+    border-top:1px solid var(--line);
+}
+
+.stages{
+    display:flex;
+    flex-direction:column;
+    margin-top:1.5rem;
+}
+
+.stage{
+    position:relative;
+    padding:1.5rem 0;
+    border-top:1px solid var(--line);
+    display:grid;
+    grid-template-columns:50px 1fr;
+    gap:1.25rem;
+}
+
+.stage:first-of-type{
+    border-top:none;
+}
+
+.stage .num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    color:var(--muted);
+}
+
+.stage h3{
+    margin-bottom:.5rem;
+    font-size:1.1rem;
+}
+
+.stage p{
+    color:var(--ink-soft);
+    max-width:560px;
+}
+
+.body-text{
+    color:var(--ink-soft);
+}
+
+ul{
+    margin:1.25rem 0 1.25rem 1.25rem;
+    color:var(--ink-soft);
+    line-height:1.9;
+}
+
+.tips{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:1rem;
+    margin-top:1.5rem;
+}
+
+.tip{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.25rem;
+}
+
+.tip strong{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:var(--amber);
+}
+
+.tip p{
+    margin-top:.6rem;
+    font-size:.92rem;
+}
+
+</style>
+
+</DocsLayout>

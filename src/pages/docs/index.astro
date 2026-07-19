@@ -1,22 +1,252 @@
 ---
 import DocsLayout from "../../layouts/DocsLayout.astro";
+const base = import.meta.env.BASE_URL;
 ---
 
 <DocsLayout title="Introduction">
 
 <h1>Introduction</h1>
 
-<p>
-Welcome to the Zero-Day Handbook.
+<p class="lead">
+Welcome to the <strong>Zero-Day Handbook</strong> — a free, open guide to
+understanding how zero-day vulnerabilities are found, exploited, disclosed,
+and fixed. It's written for people who are curious about security but don't
+want to wade through a dense academic paper to get the basics right.
 </p>
 
 <p>
-This project explains what zero-day vulnerabilities are, how attackers exploit them,
-how security researchers discover them, and how vendors release patches.
+A single unpatched flaw has taken down hospital networks, exposed millions
+of encryption keys, and given nation-states silent access to activists'
+phones. Zero-days sit at the center of almost every major cybersecurity
+story of the last two decades — this handbook exists to make that world
+legible, one concept at a time.
 </p>
 
+<hr />
+
+<h2>What You'll Find Here</h2>
+
+<div class="topic-list">
+
+  <a href={`${base}docs/zero-day`} class="topic">
+    <span class="topic-num">01</span>
+    <div>
+      <h3>What is a Zero-Day?</h3>
+      <p>Core definitions, terminology, and where the name actually comes from.</p>
+    </div>
+  </a>
+
+  <a href={`${base}docs/lifecycle`} class="topic">
+    <span class="topic-num">02</span>
+    <div>
+      <h3>Vulnerability Lifecycle</h3>
+      <p>The five stages every vulnerability moves through, from discovery to patch.</p>
+    </div>
+  </a>
+
+  <a href={`${base}docs/case-studies`} class="topic">
+    <span class="topic-num">03</span>
+    <div>
+      <h3>Case Studies</h3>
+      <p>Five real incidents — Stuxnet, WannaCry, Heartbleed, Log4Shell, and Pegasus.</p>
+    </div>
+  </a>
+
+  <a href={`${base}docs/linux-security`} class="topic">
+    <span class="topic-num">04</span>
+    <div>
+      <h3>Linux Security</h3>
+      <p>Why Linux is a prime target, and how servers are actually hardened against it.</p>
+    </div>
+  </a>
+
+  <a href={`${base}docs/references`} class="topic">
+    <span class="topic-num">05</span>
+    <div>
+      <h3>References</h3>
+      <p>Databases, standards, and further reading to go deeper on any topic here.</p>
+    </div>
+  </a>
+
+</div>
+
+<h2>Who This Is For</h2>
+
 <p>
-Use the navigation on the left to explore each topic.
+You don't need a security background to follow along. If you're a developer
+curious about how the bugs you ship could be exploited, a student getting
+into cybersecurity, or just someone who wants to understand what's actually
+behind the next "zero-day" headline — this is written for you.
 </p>
+
+<hr />
+
+<h2>About the Author</h2>
+
+<div class="author-card">
+
+  <div class="author-top">
+    <div class="author-avatar">RM</div>
+    <div>
+      <h3>Rudra Kumar Mavi</h3>
+      <p class="author-role">Computer Science Engineering student · AI/ML</p>
+    </div>
+  </div>
+
+  <p class="author-bio">
+    I'm a CSE student specializing in AI/ML, with a strong pull toward
+    cybersecurity, DevSecOps, and OSINT tooling. I built this handbook to
+    turn what I've learned researching zero-days into something clear
+    enough for anyone to pick up. On the security side, I focus on
+    source-code review — finding the gap between what a spec promises and
+    what the implementation actually does — rather than pure black-box
+    recon.
+  </p>
+
+  <div class="author-tags">
+    <span>AI / ML</span>
+    <span>Cybersecurity</span>
+    <span>DevSecOps</span>
+    <span>OSINT</span>
+    <span>Bug Bounty</span>
+  </div>
+
+  <div class="author-links">
+    <a href="https://mavirudra.github.io" target="_blank" rel="noopener" class="btn solid">
+      View My Portfolio
+    </a>
+    <a href="https://github.com/mavirudra" target="_blank" rel="noopener" class="btn ghost">
+      GitHub
+    </a>
+  </div>
+
+</div>
+
+<style>
+
+.lead{
+    font-size:1.1rem;
+    line-height:1.85;
+    color:var(--ink-soft);
+}
+
+hr{
+    margin:2.5rem 0;
+    border:none;
+    border-top:1px solid var(--line);
+}
+
+.topic-list{
+    display:flex;
+    flex-direction:column;
+    margin:1.5rem 0 2.5rem;
+}
+
+.topic{
+    display:grid;
+    grid-template-columns:50px 1fr;
+    gap:1.25rem;
+    padding:1.25rem 0;
+    border-top:1px solid var(--line);
+    transition:.15s ease;
+}
+
+.topic:first-of-type{
+    border-top:none;
+}
+
+.topic:hover h3{
+    color:var(--accent);
+}
+
+.topic-num{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    color:var(--muted);
+}
+
+.topic h3{
+    font-size:1.05rem;
+    margin-bottom:.35rem;
+    transition:color .15s ease;
+}
+
+.topic p{
+    color:var(--ink-soft);
+    font-size:.92rem;
+    max-width:480px;
+}
+
+.author-card{
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:2rem;
+    margin-top:1.5rem;
+}
+
+.author-top{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    margin-bottom:1.25rem;
+}
+
+.author-avatar{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:500;
+    font-size:.95rem;
+    flex-shrink:0;
+}
+
+.author-card h3{
+    font-size:1.15rem;
+    margin-bottom:.25rem;
+}
+
+.author-role{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    color:var(--muted);
+}
+
+.author-bio{
+    color:var(--ink-soft);
+    line-height:1.8;
+    max-width:640px;
+}
+
+.author-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:.5rem;
+    margin:1.5rem 0;
+}
+
+.author-tags span{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    background:var(--accent-soft);
+    color:var(--accent);
+    padding:.35rem .75rem;
+    border-radius:20px;
+}
+
+.author-links{
+    display:flex;
+    gap:.75rem;
+    flex-wrap:wrap;
+    margin-top:1.5rem;
+}
+
+</style>
 
 </DocsLayout>

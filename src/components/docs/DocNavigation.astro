@@ -1,0 +1,90 @@
+---
+interface Props {
+  prevTitle?: string;
+  prevHref?: string;
+  nextTitle?: string;
+  nextHref?: string;
+}
+
+const {
+  prevTitle,
+  prevHref,
+  nextTitle,
+  nextHref
+} = Astro.props;
+---
+
+<nav class="doc-nav">
+
+  {
+    prevHref ? (
+      <a href={prevHref} class="nav-card">
+        <span>← Previous</span>
+        <strong>{prevTitle}</strong>
+      </a>
+    ) : <div></div>
+  }
+
+  {
+    nextHref ? (
+      <a href={nextHref} class="nav-card right">
+        <span>Next →</span>
+        <strong>{nextTitle}</strong>
+      </a>
+    ) : <div></div>
+  }
+
+</nav>
+
+<style>
+
+.doc-nav{
+    display:flex;
+    justify-content:space-between;
+    gap:1rem;
+    margin-top:5rem;
+}
+
+.nav-card{
+    display:flex;
+    flex-direction:column;
+    gap:.4rem;
+    padding:1rem 1.4rem;
+    border:1px solid #30363d;
+    border-radius:14px;
+    text-decoration:none;
+    color:white;
+    background:#161b22;
+    transition:.25s;
+    min-width:220px;
+}
+
+.nav-card:hover{
+    border-color:#58a6ff;
+    transform:translateY(-3px);
+}
+
+.right{
+    text-align:right;
+    margin-left:auto;
+}
+
+.nav-card span{
+    color:#58a6ff;
+    font-size:.9rem;
+}
+
+@media(max-width:768px){
+
+.doc-nav{
+    flex-direction:column;
+}
+
+.right{
+    margin-left:0;
+    text-align:left;
+}
+
+}
+
+</style>

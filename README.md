@@ -1,43 +1,82 @@
-# Astro Starter Kit: Minimal
+# Zero-Day 🛡️
 
-```sh
-npm create astro@latest -- --template minimal
+An interactive handbook explaining zero-day vulnerabilities and modern
+cybersecurity — built to be a clear, beginner-friendly entry point into
+how vulnerabilities are discovered, exploited, disclosed, and patched.
+
+## What's Inside
+
+- **Vulnerability Lifecycle** — the full journey from discovery to patch
+- **What is a Zero-Day?** — core concepts explained simply
+- **Case Studies** — real-world incidents like Stuxnet
+- **Linux Security** — how vulnerabilities affect Linux servers and infrastructure
+- **References** — the databases, standards, and reading that back this handbook
+
+## Tech Stack
+
+- [Astro](https://astro.build) — static site generation
+- [lucide-astro](https://lucide.dev) — icons
+- Vanilla CSS (no framework)
+
+## Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/
+│   │   ├── docs/          # Sidebar navigation for the docs section
+│   │   ├── hero/           # Homepage hero
+│   │   ├── layout/         # Navbar, Footer
+│   │   ├── learn/           # "What You'll Learn" cards
+│   │   ├── Lifecycle.astro
+│   │   └── LifecycleStep.astro
+│   ├── layouts/
+│   │   ├── BaseLayout.astro
+│   │   └── DocsLayout.astro
+│   ├── pages/
+│   │   ├── docs/           # Handbook content pages
+│   │   └── index.astro     # Homepage
+│   └── styles/
+│       └── global.css
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Running Locally
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+npm install
+npm run dev        # http://localhost:4321
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Command           | Action                                       |
+| ------------------ | --------------------------------------------- |
+| `npm install`       | Install dependencies                           |
+| `npm run dev`       | Start local dev server at `localhost:4321`     |
+| `npm run build`     | Build for production to `./dist/`              |
+| `npm run preview`   | Preview the production build locally           |
 
-## 🧞 Commands
+## Deployment
 
-All commands are run from the root of the project, from a terminal:
+This repo is configured to deploy automatically to GitHub Pages at
+`https://mavirudra.github.io/zero-day` via GitHub Actions on every push
+to `main` (see `.github/workflows/deploy.yml`).
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+One-time setup after pushing: in the repo, go to **Settings → Pages** and
+set **Source** to **GitHub Actions**. The first push to `main` will
+trigger the build and deploy automatically.
 
-## 👀 Want to learn more?
+## Roadmap
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [ ] Add more case studies (Pegasus, Log4Shell, etc.)
+- [ ] Expand Linux Security section with hands-on hardening examples
+- [ ] Mobile nav for the docs sidebar
+
+## Contributing
+
+This is primarily a personal/educational project, but issues and PRs
+with corrections or additional case studies are welcome.
+
+## License
+
+MIT

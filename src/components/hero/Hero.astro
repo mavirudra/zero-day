@@ -1,35 +1,42 @@
+---
+const base = import.meta.env.BASE_URL;
+---
+
 <section class="hero">
-  <div class="hero-glow"></div>
 
   <div class="container hero-grid">
 
     <div class="hero-content">
 
-      <span class="badge">
-        CYBERSECURITY HANDBOOK • 2026
+      <span class="eyebrow">
+        <span class="dot"></span> CYBERSECURITY HANDBOOK · 2026
       </span>
 
-      <h1>
-        Understanding
-        <span>Zero-Day</span>
-        Vulnerabilities
+      <h1 class="name">
+        Understanding<br />
+        <em>Zero-Day</em> Vulnerabilities
       </h1>
 
       <p class="subtitle">
         A modern, beginner-friendly handbook explaining how zero-day
-        vulnerabilities are discovered, exploited, and patched through
+        vulnerabilities are discovered, exploited, and patched — through
         real-world examples and security research.
       </p>
 
-      <div class="buttons">
-        <a href="/docs" class="primary-btn">
-          📖 Read Docs
+      <div class="terminal">
+        <span class="prompt">$</span><span class="typed" id="typedLine">scan --target unknown</span>
+      </div>
+
+      <div class="cta-row">
+        <a href={`${base}docs`} class="btn solid">
+          Read Docs
         </a>
 
         <a
           href="https://github.com/mavirudra/zero-day"
           target="_blank"
-          class="secondary-btn"
+          rel="noopener"
+          class="btn ghost"
         >
           View Source
         </a>
@@ -57,18 +64,27 @@
     <div class="hero-panel">
 
       <div class="panel-card">
-        <h3>🛡️ Fundamentals</h3>
-        <p>Understand what zero-day vulnerabilities are and why they matter.</p>
+        <span class="idx">01</span>
+        <div>
+          <h3>Fundamentals</h3>
+          <p>Understand what zero-day vulnerabilities are and why they matter.</p>
+        </div>
       </div>
 
       <div class="panel-card">
-        <h3>💥 Case Studies</h3>
-        <p>Explore famous incidents including Stuxnet and Pegasus.</p>
+        <span class="idx">02</span>
+        <div>
+          <h3>Case Studies</h3>
+          <p>Explore famous incidents including Stuxnet and Pegasus.</p>
+        </div>
       </div>
 
       <div class="panel-card">
-        <h3>🐧 Linux Security</h3>
-        <p>Learn how vulnerabilities affect Linux servers and operating systems.</p>
+        <span class="idx">03</span>
+        <div>
+          <h3>Linux Security</h3>
+          <p>Learn how vulnerabilities affect Linux servers and operating systems.</p>
+        </div>
       </div>
 
     </div>
@@ -78,24 +94,7 @@
 
 <style>
 .hero{
-    position:relative;
-    overflow:hidden;
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    isolation: isolate;
-}
-
-.hero-glow{
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:#2563eb;
-    opacity:.18;
-    filter:blur(180px);
-    top:-150px;
-    right:-150px;
-    z-index:-1;
+    padding:6rem 0 5rem;
 }
 
 .hero-grid{
@@ -109,139 +108,178 @@
     z-index:2;
 }
 
-.badge{
-    display:inline-block;
-    padding:.6rem 1rem;
-    border-radius:999px;
-    background:#161b22;
-    border:1px solid #30363d;
-    color:#58a6ff;
-    margin-bottom:2rem;
-    font-size:.85rem;
-    letter-spacing:.08em;
-}
-
-h1{
-    font-size:clamp(3.5rem,7vw,5.5rem);
-    line-height:1.05;
+.eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    color:var(--accent);
+    display:flex;
+    align-items:center;
+    gap:.5rem;
     margin-bottom:1.5rem;
+    letter-spacing:.04em;
 }
 
-h1 span{
-    color:#58a6ff;
+.dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--accent);
+    display:inline-block;
+}
+
+.name{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    font-size:clamp(2.6rem,6vw,4rem);
+    line-height:1.08;
+    margin-bottom:1.25rem;
+    letter-spacing:-.01em;
+}
+
+.name em{
+    font-style:normal;
+    color:var(--accent);
 }
 
 .subtitle{
-    color:#9da7b3;
-    font-size:1.15rem;
+    color:var(--ink-soft);
+    font-size:1.1rem;
     line-height:1.8;
-    max-width:650px;
+    max-width:560px;
+    margin-bottom:2rem;
 }
 
-.buttons{
+.terminal{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.9rem;
+    background:var(--ink);
+    color:#D7E4DC;
+    border-radius:var(--radius);
+    padding:14px 18px;
+    max-width:400px;
+    overflow:hidden;
+}
+
+.terminal .prompt{
+    color:#7FBFA1;
+    margin-right:8px;
+}
+
+.terminal .typed::after{
+    content:'';
+    display:inline-block;
+    width:6px;
+    height:14px;
+    background:#7FBFA1;
+    margin-left:2px;
+    vertical-align:-2px;
+    animation:blink 1s step-end infinite;
+}
+
+@keyframes blink{
+    50%{ opacity:0; }
+}
+
+.cta-row{
     display:flex;
     gap:1rem;
-    margin-top:2.5rem;
+    margin-top:2rem;
     flex-wrap:wrap;
-}
-
-.primary-btn,
-.secondary-btn{
-    padding:14px 24px;
-    border-radius:12px;
-    text-decoration:none;
-    transition:.25s;
-    font-weight:600;
-}
-
-.primary-btn{
-    background:#2563eb;
-    color:white;
-}
-
-.primary-btn:hover{
-    background:#1d4ed8;
-}
-
-.secondary-btn{
-    border:1px solid #30363d;
-    color:white;
-}
-
-.secondary-btn:hover{
-    background:#161b22;
 }
 
 .stats{
     display:flex;
-    gap:3rem;
-    margin-top:3.5rem;
+    gap:2.5rem;
+    margin-top:3rem;
     flex-wrap:wrap;
 }
 
 .stats h3{
-    font-size:2rem;
-    margin-bottom:.25rem;
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    margin-bottom:.2rem;
 }
 
 .stats p{
-    color:#9da7b3;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.75rem;
+    color:var(--muted);
+    text-transform:uppercase;
+    letter-spacing:.04em;
 }
 
 .hero-panel{
     display:flex;
     flex-direction:column;
-    gap:1.5rem;
+    gap:1rem;
 }
 
 .panel-card{
-    background:#161b22;
-    border:1px solid #30363d;
-    border-radius:18px;
-    padding:1.6rem;
-    transition:.25s;
+    display:grid;
+    grid-template-columns:32px 1fr;
+    gap:.75rem;
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:1.4rem 1.5rem;
+    transition:.2s ease;
 }
 
 .panel-card:hover{
-    transform:translateY(-6px);
-    border-color:#58a6ff;
-    box-shadow:0 0 25px rgba(88,166,255,.15);
+    border-color:var(--accent);
+}
+
+.panel-card .idx{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    color:var(--muted);
 }
 
 .panel-card h3{
-    margin-bottom:.8rem;
+    font-size:1.05rem;
+    margin-bottom:.4rem;
 }
 
 .panel-card p{
-    color:#9da7b3;
-    line-height:1.7;
+    color:var(--ink-soft);
+    line-height:1.6;
+    font-size:.92rem;
 }
 
 @media(max-width:900px){
 
 .hero{
-    padding:5rem 0;
+    padding:4rem 0;
 }
 
 .hero-grid{
     grid-template-columns:1fr;
 }
 
-.hero-content{
-    text-align:center;
-}
-
-.subtitle{
-    margin:auto;
-}
-
-.buttons{
-    justify-content:center;
+.cta-row{
+    justify-content:flex-start;
 }
 
 .stats{
-    justify-content:center;
+    justify-content:flex-start;
 }
 
 }
 </style>
+
+<script>
+  const target = "scan --target unknown";
+  const el = document.getElementById('typedLine');
+  if (el) {
+    el.textContent = '';
+    let i = 0;
+    function type(){
+      if(i <= target.length){
+        el.textContent = target.slice(0, i);
+        i++;
+        setTimeout(type, 90);
+      }
+    }
+    window.addEventListener('load', () => setTimeout(type, 400));
+  }
+</script>

@@ -5,7 +5,10 @@ import { Shield, Bug, Terminal, Brain } from "lucide-astro";
 
 <section id="learn" class="learn-section">
 
-<h2>What You'll Learn</h2>
+<div class="section-head">
+  <span class="tag">02</span>
+  <h2>What You'll Learn</h2>
+</div>
 
 <p class="section-text">
 This handbook explains how zero-day vulnerabilities are discovered,
@@ -16,24 +19,28 @@ weaponized, and defended against using real-world examples.
 
 <LearnCard
   icon={Shield}
+  index="01"
   title="Zero-Day Basics"
   description="Understand what zero-day vulnerabilities are and why they are among the most critical cybersecurity threats."
 />
 
 <LearnCard
   icon={Bug}
+  index="02"
   title="Famous Attacks"
   description="Explore incidents like Stuxnet, Pegasus, and other exploits that changed cybersecurity."
 />
 
 <LearnCard
   icon={Terminal}
+  index="03"
   title="Linux Security"
   description="Learn why Linux powers critical infrastructure and how vulnerabilities affect it."
 />
 
 <LearnCard
   icon={Brain}
+  index="04"
   title="Defense"
   description="Discover how researchers detect, disclose, and mitigate zero-day vulnerabilities."
 />
@@ -45,43 +52,36 @@ weaponized, and defended against using real-world examples.
 <style>
 
 .learn-section{
-
-padding:7rem 0;
-
+    padding:5rem 0;
 }
 
-.learn-section h2{
+.section-head{
+    display:flex;
+    align-items:baseline;
+    gap:.75rem;
+    margin-bottom:.75rem;
+}
 
-font-size:3rem;
+.section-head .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.8rem;
+    color:var(--muted);
+}
 
-text-align:center;
-
-margin-bottom:1rem;
-
+.section-head h2{
+    font-size:clamp(1.75rem,4vw,2.25rem);
 }
 
 .section-text{
-
-max-width:700px;
-
-margin:auto;
-
-text-align:center;
-
-margin-bottom:4rem;
-
-color:#9da7b3;
-
+    max-width:600px;
+    color:var(--ink-soft);
+    margin-bottom:3rem;
 }
 
 .grid{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-gap:2rem;
-
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:1.25rem;
 }
 
 </style>
