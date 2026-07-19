@@ -1,6 +1,6 @@
 # Zero-Day 🛡️
 
-[![View Live](https://img.shields.io/badge/View%20Live-mavirudra.github.io/zero-day-2D6A4F?style=for-the-badge)](https://mavirudra.github.io/zero-day)
+[![View Live](https://img.shields.io/badge/View%20Live-mavirudra.github.io/zero-day-2D6A4F?)](https://mavirudra.github.io/zero-day)
 
 An interactive handbook explaining zero-day vulnerabilities and modern
 cybersecurity — built to be a clear, beginner-friendly entry point into
