@@ -1,0 +1,245 @@
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="container hero-grid">
+
+    <div class="hero-content">
+
+      <span class="badge">
+        CYBERSECURITY HANDBOOK • 2026
+      </span>
+
+      <h1>
+        Understanding
+        <span>Zero-Day</span>
+        Vulnerabilities
+      </h1>
+
+      <p class="subtitle">
+        A modern, beginner-friendly handbook explaining how zero-day
+        vulnerabilities are discovered, exploited, and patched through
+        real-world examples and security research.
+      </p>
+
+      <div class="buttons">
+        <a href="/docs" class="primary-btn">
+          📖 Read Docs
+        </a>
+
+        <a
+          href="https://github.com/mavirudra/zero-day"
+          target="_blank"
+          class="secondary-btn"
+        >
+          View Source
+        </a>
+      </div>
+
+      <div class="stats">
+        <div>
+          <h3>5+</h3>
+          <p>Case Studies</p>
+        </div>
+
+        <div>
+          <h3>12 min</h3>
+          <p>Reading Time</p>
+        </div>
+
+        <div>
+          <h3>Open</h3>
+          <p>Source</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="hero-panel">
+
+      <div class="panel-card">
+        <h3>🛡️ Fundamentals</h3>
+        <p>Understand what zero-day vulnerabilities are and why they matter.</p>
+      </div>
+
+      <div class="panel-card">
+        <h3>💥 Case Studies</h3>
+        <p>Explore famous incidents including Stuxnet and Pegasus.</p>
+      </div>
+
+      <div class="panel-card">
+        <h3>🐧 Linux Security</h3>
+        <p>Learn how vulnerabilities affect Linux servers and operating systems.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+.hero{
+    position:relative;
+    overflow:hidden;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+}
+
+.hero-glow{
+    position:absolute;
+    width:700px;
+    height:700px;
+    background:#2563eb;
+    opacity:.15;
+    filter:blur(170px);
+    top:-150px;
+    right:-100px;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.2fr 1fr;
+    gap:4rem;
+    align-items:center;
+}
+
+.hero-content{
+    z-index:2;
+}
+
+.badge{
+    display:inline-block;
+    padding:.6rem 1rem;
+    border-radius:999px;
+    background:#161b22;
+    border:1px solid #30363d;
+    color:#58a6ff;
+    margin-bottom:2rem;
+    font-size:.85rem;
+    letter-spacing:.08em;
+}
+
+h1{
+    font-size:clamp(3.5rem,7vw,5.5rem);
+    line-height:1.05;
+    margin-bottom:1.5rem;
+}
+
+h1 span{
+    color:#58a6ff;
+}
+
+.subtitle{
+    color:#9da7b3;
+    font-size:1.15rem;
+    line-height:1.8;
+    max-width:650px;
+}
+
+.buttons{
+    display:flex;
+    gap:1rem;
+    margin-top:2.5rem;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:14px 24px;
+    border-radius:12px;
+    text-decoration:none;
+    transition:.25s;
+    font-weight:600;
+}
+
+.primary-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.primary-btn:hover{
+    background:#1d4ed8;
+}
+
+.secondary-btn{
+    border:1px solid #30363d;
+    color:white;
+}
+
+.secondary-btn:hover{
+    background:#161b22;
+}
+
+.stats{
+    display:flex;
+    gap:3rem;
+    margin-top:3.5rem;
+    flex-wrap:wrap;
+}
+
+.stats h3{
+    font-size:2rem;
+    margin-bottom:.25rem;
+}
+
+.stats p{
+    color:#9da7b3;
+}
+
+.hero-panel{
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+.panel-card{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:18px;
+    padding:1.6rem;
+    transition:.25s;
+}
+
+.panel-card:hover{
+    transform:translateY(-6px);
+    border-color:#58a6ff;
+    box-shadow:0 0 25px rgba(88,166,255,.15);
+}
+
+.panel-card h3{
+    margin-bottom:.8rem;
+}
+
+.panel-card p{
+    color:#9da7b3;
+    line-height:1.7;
+}
+
+@media(max-width:900px){
+
+.hero{
+    padding:5rem 0;
+}
+
+.hero-grid{
+    grid-template-columns:1fr;
+}
+
+.hero-content{
+    text-align:center;
+}
+
+.subtitle{
+    margin:auto;
+}
+
+.buttons{
+    justify-content:center;
+}
+
+.stats{
+    justify-content:center;
+}
+
+}
+</style>

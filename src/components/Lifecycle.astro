@@ -1,0 +1,99 @@
+---
+import LifecycleStep from "./LifecycleStep.astro";
+---
+
+<section class="lifecycle">
+
+<h2>Vulnerability Lifecycle</h2>
+
+<p class="intro">
+Every zero-day follows a journey—from discovery by researchers to exploitation by attackers and eventually a security patch.
+</p>
+
+<div class="timeline">
+
+<LifecycleStep
+emoji="🔍"
+title="Discovery"
+description="A software flaw is discovered by a researcher or attacker."
+/>
+
+<div class="arrow">→</div>
+
+<LifecycleStep
+emoji="🧪"
+title="Analysis"
+description="The vulnerability is analyzed to understand its impact."
+/>
+
+<div class="arrow">→</div>
+
+<LifecycleStep
+emoji="💥"
+title="Exploitation"
+description="Attackers may create malware or exploits before a fix exists."
+/>
+
+<div class="arrow">→</div>
+
+<LifecycleStep
+emoji="📢"
+title="Disclosure"
+description="The issue is reported responsibly to the software vendor."
+/>
+
+<div class="arrow">→</div>
+
+<LifecycleStep
+emoji="🛠️"
+title="Patch"
+description="The vendor releases an update to fix the vulnerability."
+/>
+
+</div>
+
+</section>
+
+<style>
+.lifecycle{
+    padding:7rem 0;
+}
+
+.lifecycle h2{
+    text-align:center;
+    font-size:3rem;
+    margin-bottom:1rem;
+}
+
+.intro{
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+    color:#9da7b3;
+    margin-bottom:4rem;
+}
+
+.timeline{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    flex-wrap:wrap;
+}
+
+.arrow{
+    font-size:2rem;
+    color:#58a6ff;
+}
+
+@media(max-width:900px){
+    .arrow{
+        display:none;
+    }
+
+    .timeline{
+        display:grid;
+        grid-template-columns:1fr;
+    }
+}
+</style>

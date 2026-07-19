@@ -1,0 +1,104 @@
+<header class="navbar">
+
+  <div class="container nav">
+
+    <a href="/" class="logo">
+      Zero-Day
+    </a>
+
+    <nav>
+
+      <a href="/">Home</a>
+
+      <a href="/docs">Docs</a>
+
+      <a href="#learn">Learn</a>
+
+      <a href="https://github.com/mavirudra/zero-day"
+         target="_blank">
+         GitHub
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+<style>
+
+.navbar{
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+backdrop-filter:blur(14px);
+
+background:rgba(13,17,23,.75);
+
+border-bottom:1px solid rgba(255,255,255,.06);
+
+}
+
+.nav{
+
+height:72px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+}
+
+.logo{
+
+font-size:1.3rem;
+
+font-weight:700;
+
+text-decoration:none;
+
+color:white;
+
+}
+
+nav{
+
+display:flex;
+
+gap:2rem;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+color:#9da7b3;
+
+transition:.25s;
+
+}
+
+nav a:hover{
+
+color:#58a6ff;
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>

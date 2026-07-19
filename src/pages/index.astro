@@ -1,8 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Navbar from "../components/Navbar.astro";
-import Hero from "../components/Hero.astro";
-import LearnSection from "../components/LearnSection.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Hero from "../components/hero/Hero.astro";
+import LearnSection from "../components/learn/LearnSection.astro";
+import Lifecycle from "../components/Lifecycle.astro";
 ---
 
 <BaseLayout title="Zero-Day | Understanding Unknown Software Vulnerabilities">
@@ -10,5 +11,6 @@ import LearnSection from "../components/LearnSection.astro";
     <Navbar />
     <Hero />
     <LearnSection />
+    <Lifecycle />
 
 </BaseLayout>
