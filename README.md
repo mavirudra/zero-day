@@ -79,6 +79,16 @@ trigger the build and deploy automatically.
 This is primarily a personal/educational project, but issues and PRs
 with corrections or additional case studies are welcome.
 
-## License
+## 📄 Licensing
 
-MIT
+This repository uses dual licensing.
+
+### Source Code
+
+All source code (including Astro components, JavaScript, TypeScript, CSS, and configuration files) is licensed under the **MIT License**. See the [LICENSE](LICENSE) file.
+
+### Documentation
+
+All written documentation, research articles, vulnerability analyses, and original graphics are licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)**. See the [LICENSE-docs](LICENSE-docs) file.
+
+Unless otherwise noted, code examples included within documentation are also licensed under the MIT License.
