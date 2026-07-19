@@ -1,0 +1,110 @@
+---
+import DocsLayout from "../../layouts/DocsLayout.astro";
+---
+
+<DocsLayout title="Case Studies">
+
+<h1>Case Studies</h1>
+
+<p class="lead">
+Real-world zero-day attacks demonstrate how unknown vulnerabilities can have
+global consequences. One of the most famous examples is <strong>Stuxnet</strong>.
+</p>
+
+<section class="case-study">
+
+<h2>Stuxnet (2010)</h2>
+
+<div class="meta">
+  <span>🎯 Target: Industrial Control Systems</span>
+  <span>📅 Year: 2010</span>
+</div>
+
+<p>
+Stuxnet was a highly sophisticated computer worm designed to target Siemens
+industrial control systems used in Iran's nuclear program. It exploited
+multiple Windows zero-day vulnerabilities, allowing it to spread and execute
+without detection.
+</p>
+
+<h3>Why It Was Important</h3>
+
+<ul>
+  <li>Used multiple zero-day vulnerabilities.</li>
+  <li>Targeted physical infrastructure instead of stealing data.</li>
+  <li>Changed how governments viewed cyber warfare.</li>
+  <li>Became one of the most studied cyberattacks in history.</li>
+</ul>
+
+<h3>Lessons Learned</h3>
+
+<div class="lesson-grid">
+
+<div class="lesson">
+<h4>Defense in Depth</h4>
+<p>Multiple layers of security reduce the impact of unknown vulnerabilities.</p>
+</div>
+
+<div class="lesson">
+<h4>Regular Updates</h4>
+<p>Keeping systems patched reduces the attack surface after fixes are released.</p>
+</div>
+
+<div class="lesson">
+<h4>Monitoring</h4>
+<p>Behavior-based monitoring can detect suspicious activity even when signatures do not.</p>
+</div>
+
+</div>
+
+</section>
+
+<style>
+.lead{
+  font-size:1.1rem;
+  color:#c9d1d9;
+  line-height:1.8;
+}
+
+.case-study{
+  margin-top:2.5rem;
+}
+
+.meta{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+  margin:1rem 0 2rem;
+}
+
+.meta span{
+  background:#161b22;
+  border:1px solid #30363d;
+  padding:.5rem .9rem;
+  border-radius:999px;
+}
+
+.lesson-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:1rem;
+  margin-top:1.5rem;
+}
+
+.lesson{
+  background:#161b22;
+  border:1px solid #30363d;
+  border-radius:14px;
+  padding:1.25rem;
+}
+
+.lesson h4{
+  margin-bottom:.6rem;
+}
+
+.lesson p{
+  color:#9da7b3;
+}
+</style>
+
+</DocsLayout>

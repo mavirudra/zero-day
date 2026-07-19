@@ -1,22 +1,36 @@
+---
+const current = Astro.url.pathname;
+
+const links = [
+  { href: "/docs", label: "📘 Introduction" },
+  { href: "/docs/zero-day", label: "🛡️ What is a Zero-Day?" },
+  { href: "/docs/lifecycle", label: "🔄 Lifecycle" },
+  { href: "/docs/case-studies", label: "💥 Case Studies" },
+  { href: "/docs/linux-security", label: "🐧 Linux Security" },
+  { href: "/docs/references", label: "📚 References" }
+];
+---
+
 <aside class="sidebar">
 
-  <h2>Documentation</h2>
+<h2>Documentation</h2>
 
-  <nav>
+<nav>
 
-    <a href="/docs">📘 Introduction</a>
+{
+links.map(link => (
 
-    <a href="/docs/zero-day">🛡️ What is a Zero-Day?</a>
+<a
+href={link.href}
+class={current === link.href ? "active" : ""}
+>
+{link.label}
+</a>
 
-    <a href="/docs/lifecycle">🔄 Lifecycle</a>
+))
+}
 
-    <a href="/docs/case-studies">💥 Case Studies</a>
-
-    <a href="/docs/linux-security">🐧 Linux Security</a>
-
-    <a href="/docs/references">📚 References</a>
-
-  </nav>
+</nav>
 
 </aside>
 
@@ -31,23 +45,18 @@
     top:72px;
 }
 
-.sidebar h2{
-    margin-bottom:1.5rem;
-    font-size:1.2rem;
-}
-
 .sidebar nav{
     display:flex;
     flex-direction:column;
-    gap:.7rem;
+    gap:.5rem;
 }
 
 .sidebar a{
     text-decoration:none;
     color:#9da7b3;
-    padding:.7rem .9rem;
+    padding:.8rem 1rem;
     border-radius:10px;
-    transition:.2s;
+    transition:.25s;
 }
 
 .sidebar a:hover{
@@ -55,10 +64,16 @@
     color:#58a6ff;
 }
 
+.active{
+    background:#1f2937;
+    color:#58a6ff !important;
+    border-left:3px solid #58a6ff;
+}
+
 @media(max-width:900px){
 
 .sidebar{
-    display:none;
+display:none;
 }
 
 }

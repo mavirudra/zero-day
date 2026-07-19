@@ -1,0 +1,111 @@
+---
+import DocsLayout from "../../layouts/DocsLayout.astro";
+---
+
+<DocsLayout title="What is a Zero-Day?">
+
+<h1>What is a Zero-Day?</h1>
+
+<p class="lead">
+A <strong>zero-day vulnerability</strong> is a software security flaw that is
+unknown to the software vendor or has no patch available. Since developers have
+had <strong>zero days</strong> to fix it, attackers may exploit it before users
+can protect themselves.
+</p>
+
+<hr />
+
+<h2>How Does a Zero-Day Happen?</h2>
+
+<ol>
+  <li>A hidden bug exists in software.</li>
+  <li>A security researcher or attacker discovers it.</li>
+  <li>If attackers find it first, they can build an exploit.</li>
+  <li>The vendor develops and releases a security patch.</li>
+</ol>
+
+<h2>Why Are Zero-Day Vulnerabilities Dangerous?</h2>
+
+<ul>
+  <li>They can be exploited before a patch exists.</li>
+  <li>Traditional antivirus software may not detect new exploits.</li>
+  <li>They often target governments, businesses, and critical infrastructure.</li>
+  <li>Successful attacks can lead to data theft, ransomware, or system compromise.</li>
+</ul>
+
+<h2>Real-World Example</h2>
+
+<div class="example">
+  <h3>Stuxnet (2010)</h3>
+
+  <p>
+    Stuxnet was one of the most sophisticated cyber weapons ever discovered.
+    It used multiple Windows zero-day vulnerabilities to target industrial
+    control systems and demonstrated how powerful zero-day exploits can be.
+  </p>
+</div>
+
+<h2>Key Takeaways</h2>
+
+<div class="tips">
+
+  <div class="tip">
+    <strong>🔍 Unknown</strong>
+    <p>The vulnerability is not yet publicly known or patched.</p>
+  </div>
+
+  <div class="tip">
+    <strong>⚠️ High Risk</strong>
+    <p>Attackers can exploit systems before defenders have a fix.</p>
+  </div>
+
+  <div class="tip">
+    <strong>🛡️ Protection</strong>
+    <p>Regular updates, monitoring, and responsible disclosure reduce risk.</p>
+  </div>
+
+</div>
+
+<style>
+
+.lead{
+    font-size:1.15rem;
+    line-height:1.9;
+    color:#c9d1d9;
+}
+
+hr{
+    margin:3rem 0;
+    border:none;
+    border-top:1px solid #30363d;
+}
+
+.example{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:16px;
+    padding:1.5rem;
+    margin:2rem 0;
+}
+
+.tips{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:1rem;
+    margin-top:2rem;
+}
+
+.tip{
+    background:#161b22;
+    border:1px solid #30363d;
+    border-radius:16px;
+    padding:1.3rem;
+}
+
+.tip p{
+    margin-top:.7rem;
+}
+
+</style>
+
+</DocsLayout>
