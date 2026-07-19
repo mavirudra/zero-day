@@ -1,5 +1,6 @@
 ---
 import LearnCard from "./LearnCard.astro";
+import { Shield, Bug, Terminal, Brain } from "lucide-astro";
 ---
 
 <section id="learn" class="learn-section">
@@ -14,27 +15,27 @@ weaponized, and defended against using real-world examples.
 <div class="grid">
 
 <LearnCard
-icon="🛡️"
-title="Zero-Day Basics"
-description="Understand what zero-day vulnerabilities are and why they are considered one of the biggest cybersecurity threats."
+  icon={Shield}
+  title="Zero-Day Basics"
+  description="Understand what zero-day vulnerabilities are and why they are among the most critical cybersecurity threats."
 />
 
 <LearnCard
-icon="💥"
-title="Famous Attacks"
-description="Explore incidents like Stuxnet, Pegasus and other attacks that changed cybersecurity forever."
+  icon={Bug}
+  title="Famous Attacks"
+  description="Explore incidents like Stuxnet, Pegasus, and other exploits that changed cybersecurity."
 />
 
 <LearnCard
-icon="🐧"
-title="Linux Security"
-description="Learn why Linux powers servers worldwide and how vulnerabilities affect the Linux ecosystem."
+  icon={Terminal}
+  title="Linux Security"
+  description="Learn why Linux powers critical infrastructure and how vulnerabilities affect it."
 />
 
 <LearnCard
-icon="🧠"
-title="Defense"
-description="Discover how developers, researchers and organizations detect and patch zero-day vulnerabilities."
+  icon={Brain}
+  title="Defense"
+  description="Discover how researchers detect, disclose, and mitigate zero-day vulnerabilities."
 />
 
 </div>

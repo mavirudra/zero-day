@@ -1,15 +1,17 @@
 ---
 interface Props {
-  icon: string;
+  icon: any;
   title: string;
   description: string;
 }
 
-const { icon, title, description } = Astro.props;
+const { icon: Icon, title, description } = Astro.props;
 ---
 
 <div class="learn-card">
-  <div class="icon">{icon}</div>
+  <div class="icon">
+    <Icon size={36} strokeWidth={2} />
+  </div>
 
   <h3>{title}</h3>
 
@@ -31,18 +33,17 @@ const { icon, title, description } = Astro.props;
   box-shadow: 0 0 30px rgba(88,166,255,.15);
 }
 
-.icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+.icon{
+  color:#58a6ff;
+  margin-bottom:1rem;
 }
 
-.learn-card h3 {
-  margin-bottom: .8rem;
-  color: white;
+.learn-card h3{
+  margin-bottom:.8rem;
 }
 
-.learn-card p {
-  color: #9da7b3;
-  line-height: 1.7;
+.learn-card p{
+  color:#9da7b3;
+  line-height:1.7;
 }
 </style>

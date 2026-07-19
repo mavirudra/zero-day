@@ -1,0 +1,66 @@
+<aside class="sidebar">
+
+  <h2>Documentation</h2>
+
+  <nav>
+
+    <a href="/docs">📘 Introduction</a>
+
+    <a href="/docs/zero-day">🛡️ What is a Zero-Day?</a>
+
+    <a href="/docs/lifecycle">🔄 Lifecycle</a>
+
+    <a href="/docs/case-studies">💥 Case Studies</a>
+
+    <a href="/docs/linux-security">🐧 Linux Security</a>
+
+    <a href="/docs/references">📚 References</a>
+
+  </nav>
+
+</aside>
+
+<style>
+
+.sidebar{
+    width:260px;
+    padding:2rem;
+    border-right:1px solid #30363d;
+    min-height:calc(100vh - 72px);
+    position:sticky;
+    top:72px;
+}
+
+.sidebar h2{
+    margin-bottom:1.5rem;
+    font-size:1.2rem;
+}
+
+.sidebar nav{
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+}
+
+.sidebar a{
+    text-decoration:none;
+    color:#9da7b3;
+    padding:.7rem .9rem;
+    border-radius:10px;
+    transition:.2s;
+}
+
+.sidebar a:hover{
+    background:#161b22;
+    color:#58a6ff;
+}
+
+@media(max-width:900px){
+
+.sidebar{
+    display:none;
+}
+
+}
+
+</style>

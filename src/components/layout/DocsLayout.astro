@@ -1,0 +1,62 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Sidebar from "../components/docs/Sidebar.astro";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<BaseLayout title={title}>
+
+  <Navbar />
+
+  <main class="docs-layout">
+
+    <Sidebar />
+
+    <article class="content">
+      <slot />
+    </article>
+
+  </main>
+
+  <Footer />
+
+</BaseLayout>
+
+<style>
+
+.docs-layout{
+    display:flex;
+    min-height:100vh;
+}
+
+.content{
+    flex:1;
+    padding:4rem;
+    max-width:900px;
+}
+
+.content h1{
+    margin-bottom:1rem;
+}
+
+.content p{
+    color:#9da7b3;
+    line-height:1.8;
+}
+
+@media(max-width:900px){
+
+.content{
+    padding:2rem;
+}
+
+}
+
+</style>
