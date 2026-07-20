@@ -17,23 +17,24 @@ const links = [
 <h2>Documentation</h2>
 
 <nav>
-
-{
-links.map(link => (
-
-<a
-href={link.href}
-class={current === link.href ? "active" : ""}
->
+{links.map(link => (
+<a href={link.href} class={current === link.href ? "active" : ""}>
 {link.label}
 </a>
-
-))
-}
-
+))}
 </nav>
 
 </aside>
+
+<div class="mobile-nav">
+  <select onchange="window.location.href=this.value">
+    {links.map(link => (
+      <option value={link.href} selected={current === link.href}>
+        {link.label}
+      </option>
+    ))}
+  </select>
+</div>
 
 <style>
 
@@ -85,10 +86,32 @@ class={current === link.href ? "active" : ""}
     font-weight:500;
 }
 
+.mobile-nav{
+    display:none;
+}
+
 @media(max-width:900px){
 
 .sidebar{
     display:none;
+}
+
+.mobile-nav{
+    display:block;
+    padding:1rem 1.25rem;
+    border-bottom:1px solid var(--line);
+    background:var(--bg-alt);
+}
+
+.mobile-nav select{
+    width:100%;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:.85rem;
+    color:var(--ink);
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:.7rem .75rem;
 }
 
 }
